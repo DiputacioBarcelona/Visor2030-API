@@ -1,0 +1,47 @@
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <a href="" data-bs-toggle="modal" data-bs-target="#user-modal" title="{% trans %}Usuari{% endtrans %}" class="mx-1">
+        <i class="bi bi-person-fill"></i> {{ app.user.userIdentifier }}
+    </a>
+    <a href="{{ path('app_logout') }}" title="{% trans %}Sortir{% endtrans %}" class="mx-1">
+        <i class="bi bi-box-arrow-right"></i>
+    </a>
+{% else %}
+    <a href="{{ path('login') }}">
+        <i class="bi bi-lock-fill"></i> Acccés restringit
+    </a>
+{% endif %}
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <div class="modal fade" id="user-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-diba text-white">
+                    <div class="modal-title fs-5">
+                        <i class="bi bi-person-fill"></i>
+                        {% trans %}Usuari{% endtrans %}
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped table-bordered m-0"
+                           aria-describedby="{{ "Informació de l'usuari"|trans }}">
+                        <tr>
+                            <th scope="row">{{ 'Username'|trans }}</th>
+                            <td>{{ app.user.userIdentifier }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{{ 'Rols'|trans }}</th>
+                            <td>
+                                {% for role in app.user.roles %}
+                                    <span class="ml-2 badge badge-info">
+                                        {{ role | replace({'ROLE_': ''}) | lower }}
+                                    </span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

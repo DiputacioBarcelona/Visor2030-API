@@ -1,0 +1,10 @@
+twig:
+  default_path: '%kernel.project_dir%/templates'
+  file_name_pattern: '*.twig'
+  globals:
+    server_info: '@App\Service\ServerInfo'
+    app_env: '%env(APP_ENV)%'
+
+when@test:
+  twig:
+    strict_variables: true

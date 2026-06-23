@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "chart.js": "^4.4.4",
+    "datatables.net": "^2.1",
+    "datatables.net-bs": "^2.1",
+    "datatables.net-bs5": "^2.1.8",
+    "jquery": "^3.7",
+    "leaflet": "^1.9",
+    "sweetalert2": "^11.6.13"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.25",
+    "@babel/plugin-proposal-class-properties": "^7.18",
+    "@babel/plugin-transform-class-properties": "^7.25",
+    "@babel/preset-env": "^7.25",
+    "@symfony/webpack-encore": "^5.0",
+    "core-js": "^3.38.1",
+    "file-loader": "^6.0",
+    "postcss": "^8.4",
+    "postcss-loader": "^8.1",
+    "postcss-scss": "^4.0",
+    "regenerator-runtime": "^0.13",
+    "resolve-url-loader": "^5.0",
+    "sass": "^1.79",
+    "sass-loader": "^16.0",
+    "webpack": "^5.95",
+    "webpack-cli": "^5.1",
+    "webpack-notifier": "^1.15"
+  },
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  }
+}

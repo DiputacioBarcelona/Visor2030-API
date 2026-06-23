@@ -1,0 +1,8 @@
+body {
+  &.dev {
+    border: solid 15px #B0413E;
+  }
+  &.test {
+    border: solid 15px #ffa352;
+  }
+}

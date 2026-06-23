@@ -1,0 +1,8 @@
+doctrine:
+  dbal:
+    url: "%env(resolve:DATABASE_URL)%"
+    options:
+      # PDO::MYSQL_ATTR_SSL_CAPATH
+      1010: null
+      # PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT
+      1014: false

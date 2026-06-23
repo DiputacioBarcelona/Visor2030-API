@@ -1,0 +1,26 @@
+{% extends 'front.html.twig' %}
+
+{% block breadcrumb %}
+    {% set breads = [{label: 'Accés'|trans}] %}
+    {% include 'partials/breadcrumb.html.twig' with {home: path('front.home'), breads: breads} only %}
+{% endblock %}
+
+{% block contingut_central %}
+    <div class="alert alert-info" role="alert">
+        <i class="bi bi-info-circle"></i>
+        Per accedir cal estar donat d'alta prèviament a l'aplicació i disposar d'un usuari corporatiu de la Diputació de Barcelona.
+    </div>
+
+    <div class="text-center my-4">
+        {% if app_env == 'dev' %}
+            <a href="{{ path('login.in_memory') }}" class="btn btn-lg btn-primary">
+                <i class="bi bi-person-exclamation"></i>
+                Accés Usuaris de prova
+            </a>
+        {% endif %}
+        <a href="{{ path('login.in_vus') }}" class="btn btn-lg btn-primary">
+            <i class="bi bi-person-fill"></i>
+            Accés Usuaris Diputació de Barcelona
+        </a>
+    </div>
+{% endblock %}

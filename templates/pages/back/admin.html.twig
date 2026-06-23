@@ -1,0 +1,39 @@
+{% extends 'back.html.twig' %}
+
+{% block breadcrumb %}
+    {% set breads = [{label: 'Inici'}, {label: 'Administració'}] %}
+    {% include 'partials/breadcrumb.html.twig' with {home: path('front.home'), breads: breads} only %}
+{% endblock %}
+
+{% block contingut_central %}
+    <h2 class="h5 c-diba">{{ 'Pàgina per usuaris autenticats'|trans }}</h2>
+
+    <div class="mb-4">
+        <table class="table table-striped table-bordered table-hover datatable" id="infolinks" aria-describedby="{{ 'Llista de recursos'|trans }}">
+            <thead>
+                <tr>
+                    <th scope="col">{% trans %}Descripció{% endtrans %}</th>
+                    <th scope="col">{% trans %}Url{% endtrans %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for desc, link in links %}
+                    <tr>
+                        <th scope="row">{{ desc }}</th>
+                        <td><a href="{{ link }}" target="_blank">{{ link }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('back') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('back') }}
+{% endblock %}

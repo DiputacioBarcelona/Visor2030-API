@@ -1,0 +1,18 @@
+{% extends 'front.html.twig' %}
+
+{% block breadcrumb %}
+    {% set breads = [{label: 'Inici'}] %}
+    {% include 'partials/breadcrumb.html.twig' with {home: path('front.home'), breads: breads} only %}
+{% endblock %}
+
+{% block banner %}
+    {% include 'partials/banner.html.twig' %}
+{% endblock %}
+
+{% block contingut_central %}
+    <h2 class="h5 c-diba">{{ "Llegeix-me"|trans }}</h2>
+
+    {% apply spaceless %}
+        <pre>{{ readme }}</pre>
+    {% endapply %}
+{% endblock %}

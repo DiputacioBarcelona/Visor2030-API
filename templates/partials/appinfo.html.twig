@@ -1,0 +1,51 @@
+<a class="nav-item nav-link" href="" data-bs-toggle="modal" data-bs-target="#environment-modal">
+    <span class="bi bi-info-circle-fill c-text-light"></span>
+</a>
+
+<div class="modal fade" id="environment-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-diba text-white">
+                <div class="modal-title fs-5">
+                    <span class="bi bi-gear-fill"></span>
+                    {% trans %}Informació de l'aplicació{% endtrans %}
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-bordered m-0" aria-describedby="{{ "Informació de l'aplicació"|trans }}">
+                    <tr>
+                        <th scope="row">{{ 'Entorn'|trans }}</th>
+                        <td>{{ app.environment }}</td>
+                    </tr>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <tr>
+                            <th scope="row">{{ 'Build'|trans }}</th>
+                            <td>{{ server_info.Build|date('d/m/Y H:i:s') }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{{ 'Nom del servidor'|trans }}</th>
+                            <td>{{ server_info.serverName }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{{ 'IP del servidor'|trans }}</th>
+                            <td>{{ server_info.serverIP }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{{ 'Versió de Symfony'|trans }}</th>
+                            <td>{{ server_info.symfonyVersion }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{{ 'Versió de PHP'|trans }}</th>
+                            <td>{{ server_info.PHPVersion }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{{ 'Timestamp'|trans }}</th>
+                            <td>{{ 'now'|date('d/m/Y H:i:s')  }}</td>
+                        </tr>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

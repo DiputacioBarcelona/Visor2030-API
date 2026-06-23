@@ -1,0 +1,24 @@
+{% if breads is defined or home is defined %}
+    <nav aria-label="breadcrumb" class="pt-2">
+        <ol class="breadcrumb">
+            {% if home is defined %}
+                <li class="breadcrumb-item">
+                    <a href="{{ home }}" title="{{ 'Inici'|trans }}">
+                        <i class="bi bi-house-fill"></i>
+                    </a>
+                </li>
+            {% endif %}
+            {% if breads is defined %}
+                {% for bread in breads %}
+                    <li class="breadcrumb-item">
+                        {% if bread.path is defined %}
+                            <a href="{{ bread.path }}" class="c-text-light">{{ bread.label }}</a>
+                        {% else %}
+                            <span class="c-text-light">{{ bread.label }}</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ol>
+    </nav>
+{% endif %}

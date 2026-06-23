@@ -1,0 +1,247 @@
+security:
+  role_hierarchy:
+    ROLE_ADMIN: ROLE_USER
+  enable_authenticator_manager: true
+
+when@dev:
+  security:
+    password_hashers:
+      Symfony\Component\Security\Core\User\InMemoryUser:
+        algorithm: auto
+
+    providers:
+      # Use this provider for testing.
+      users_in_memory:
+        memory:
+          users:
+            admin:
+              password: $2y$13$osa3fub.LYQGCXmur7eMr.wwssj3KWvEYPZ1H.okQh9wH.23sk3iq
+              roles: [ROLE_USER, ROLE_ADMIN]
+            user:
+              password: user
+              roles: [ROLE_USER]
+      # Use this provider when application has users in database.
+      #            users_in_app:
+      #              entity:
+      #                  class: App\Entity\User
+      #                  property: username
+      # Use this provider if accept all aplication VUS users.
+      users_in_vus:
+        id: App\Security\WebserviceVus\VusUserProvider
+    firewalls:
+      dev:
+        pattern: ^/(_(profiler|wdt)|css|img|js)/
+        security: false
+        #   in_memory:
+        #     context: "back"
+        #     pattern: ^/login/in-memory
+        #     lazy: true
+        #     provider: users_in_memory
+        #     form_login:
+        #       login_path: login.in_memory
+        #       check_path: login.in_memory
+        #       enable_csrf: true
+        #       default_target_path: back.admin
+        #     logout:
+        #       path: app_logout
+        #            in_app:
+        #                context: 'back'
+        #                pattern: ^/login/in-app
+        #                lazy: true
+        #                provider: users_in_app
+        #                custom_authenticators:
+        #                    - App\Security\WebserviceVus\VusAuthenticator
+        #                form_login:
+        #                    login_path: login.in_app
+        #                    check_path: login.in_app
+        #                    enable_csrf: true
+        #                    default_target_path: back.admin
+        #                logout:
+        #                    path: app_logout
+        #                    target: login
+      #   in_vus:
+      #     context: "back"
+      #     pattern: ^/login/in-vus
+      #     lazy: true
+      #     provider: users_in_vus
+      #     custom_authenticators:
+      #       - App\Security\WebserviceVus\VusAuthenticator
+      #     form_login:
+      #     login_path: login.in_vus
+      #     check_path: login.in_vus
+      #     enable_csrf: true
+      #     default_target_path: back.admin
+      #     logout:
+      #     path: app_logout
+      #     target: login
+      #   in_diba:
+      #     context: "back"
+      #     pattern: ^/login/in-diba
+      #     lazy: true
+      #     provider: users_in_vus
+      #     custom_authenticators:
+      #       - App\Security\WebserviceVus\VusSingleSignOnAuthenticator
+      #     logout:
+      #     path: app_logout
+      #     target: login
+      #   main:
+      #     context: "back"
+      #     lazy: true
+      #     entry_point: App\Security\AuthenticationEntryPoint
+      #     access_denied_handler: App\Security\AccessDeniedHandler
+      #     logout:
+      #     path: app_logout
+      #     target: login
+      # germi
+      login:
+        pattern: ^/api/login
+        stateless: true
+        provider: users_in_vus
+        custom_authenticators:
+          - App\Security\WebserviceVus\VusAuthenticator
+        json_login:
+          check_path: /api/login
+          username_path: username
+          password_path: password
+
+      api:
+        pattern: ^/api
+        stateless: true
+        provider: users_in_vus
+        jwt: ~
+
+    access_control:
+      # Allow anyone to GET
+      - { path: ^/api, roles: PUBLIC_ACCESS, methods: [GET] }
+
+      # Require JWT token for POST/PUT
+      - { path: ^/api, roles: ROLE_ADMIN, methods: [POST, PUT, PATCH, DELETE] }
+
+      # Allow login
+      - { path: ^/api/login, roles: PUBLIC_ACCESS }
+
+when@test:
+  security:
+    password_hashers:
+      # By default, password hashers are resource intensive and take time. This is
+      # important to generate secure password hashes. In tests however, secure hashes
+      # are not important, waste resources and increase test times. The following
+      # reduces the work factor to the lowest possible values.
+      Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+        algorithm: auto
+        cost: 4 # Lowest possible value for bcrypt
+        time_cost: 3 # Lowest possible value for argon
+        memory_cost: 10 # Lowest possible value for argon
+    providers:
+      users_in_memory:
+        memory:
+          users:
+            admin:
+              password: admin
+              roles: [ROLE_USER, ROLE_ADMIN]
+            user:
+              password: user
+              roles: [ROLE_USER]
+    firewalls:
+      in_memory:
+        context: "back"
+        pattern: ^/login/in-memory
+        lazy: true
+        provider: users_in_memory
+        form_login:
+          login_path: login.in_memory
+          check_path: login.in_memory
+          enable_csrf: true
+          default_target_path: back.admin
+        logout:
+          path: app_logout
+          target: login
+      main:
+        context: "back"
+        lazy: true
+        entry_point: App\Security\AuthenticationEntryPoint
+        access_denied_handler: App\Security\AccessDeniedHandler
+        logout:
+          path: app_logout
+          target: login
+
+when@prod:
+  security:
+    password_hashers:
+      Symfony\Component\Security\Core\User\InMemoryUser:
+        algorithm: auto
+    providers:
+      users_in_vus:
+        id: App\Security\WebserviceVus\VusUserProvider
+      users_in_memory:
+        memory:
+          users:
+            diba:
+              password: $2y$13$/w2Co0SWtcPqI/VrwJaXReJ858WqaBSTXOC2dpIFZ.GNXy.QrLTu2
+              roles: [ROLE_USER, ROLE_ADMIN]
+    firewalls:
+      # login:
+      #   pattern: ^/api/login
+      #   stateless: true
+      #   provider: users_in_memory
+      #   json_login:
+      #     check_path: /api/login
+      #     username_path: username
+      #     password_path: password
+
+      # api:
+      #   pattern: ^/api
+      #   stateless: true
+      #   provider: users_in_memory
+      #   jwt: ~
+
+      login:
+        pattern: ^/api/login
+        stateless: true
+        provider: users_in_vus
+        custom_authenticators:
+          - App\Security\WebserviceVus\VusAuthenticator
+        json_login:
+          check_path: /api/login
+          username_path: username
+          password_path: password
+
+      api:
+        pattern: ^/api
+        stateless: true
+        provider: users_in_vus
+        jwt: ~
+
+      in_vus:
+        context: "back"
+        pattern: ^/login/in-vus
+        lazy: true
+        provider: users_in_vus
+        custom_authenticators:
+          - App\Security\WebserviceVus\VusAuthenticator
+        form_login:
+          login_path: login.in_vus
+          check_path: login.in_vus
+          enable_csrf: true
+          default_target_path: back.admin
+        logout:
+          path: app_logout
+          target: login
+      in_diba:
+        context: "back"
+        pattern: ^/login/in-diba
+        lazy: true
+        provider: users_in_vus
+        custom_authenticators:
+          - App\Security\WebserviceVus\VusSingleSignOnAuthenticator
+        logout:
+          path: app_logout
+          target: login
+      main:
+        context: "back"
+        lazy: true
+        entry_point: App\Security\AuthenticationEntryPoint
+        access_denied_handler: App\Security\AccessDeniedHandler
+        logout:
+          path: app_logout
+          target: login

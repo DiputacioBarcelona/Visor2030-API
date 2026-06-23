@@ -1,0 +1,9 @@
+framework:
+    default_locale: ca
+    translator:
+        default_path: '%kernel.project_dir%/translations'
+        fallbacks:
+            - ca
+            - es
+            - en
+        providers:

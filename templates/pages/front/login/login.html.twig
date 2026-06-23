@@ -1,0 +1,56 @@
+{% extends 'front.html.twig' %}
+
+{% block breadcrumb %}
+    {% set breads = [{label: 'Accés'|trans, path: path('login')}, {label: label}] %}
+    {% include 'partials/breadcrumb.html.twig' with {home: path('front.home'), breads: breads} only %}
+{% endblock %}
+
+{% block contingut_central %}
+    {% if error %}
+        <div class="login form-group row mb-0 pt-4">
+            <div class="col-6 m-auto">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <form action="{{ path(route) }}" method="post" class="mb-4">
+        <div class="form-group row pt-4 bg-white">
+            <label for="username" class="d-none d-sm-block col-sm-2 offset-sm-2 col-form-label text-right">
+                {{ 'Usuari'|trans }}
+            </label>
+            <div class="col-sm-6 p-1">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                    </div>
+                    <input type="text" class="form-control" id="username" placeholder="Usuari" name="_username" value="{{ last_username }}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="password" class="d-none d-sm-block col-sm-2 offset-sm-2 col-form-label text-right">
+                {{ 'Contrasenya'|trans }}
+            </label>
+            <div class="col-sm-6 p-1">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="bi bi-key-fill"></i></div>
+                    </div>
+                    <input type="password" class="form-control" id="password" placeholder="Contrasenya" name="_password">
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <div class="form-group row bg-white">
+            <div class="p-1 pl-3 offset-sm-4">
+                <button type="submit" class="btn btn-primary">{{ 'Entra'|trans }}</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

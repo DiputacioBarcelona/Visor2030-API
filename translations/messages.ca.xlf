@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="ca" target-language="ca" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="rtmDL_i" resname="Gestió de projectes">
+        <source>Gestió de projectes</source>
+        <target>Gestió de projectes</target>
+      </trans-unit>
+      <trans-unit id="DS8iw_5" resname="Maqueta corporativa">
+        <source>Maqueta corporativa</source>
+        <target>Maqueta corporativa</target>
+      </trans-unit>
+      <trans-unit id="2Rc8fD7" resname="Imatge corporativa">
+        <source>Imatge corporativa</source>
+        <target>Imatge corporativa</target>
+      </trans-unit>
+      <trans-unit id="4gFJvSQ" resname="Documentació de Symfony">
+        <source>Documentació de Symfony</source>
+        <target>Documentació de Symfony</target>
+      </trans-unit>
+      <trans-unit id="5lmU6Qk" resname="app.nom">
+        <source>app.nom</source>
+        <target>app.nom</target>
+      </trans-unit>
+      <trans-unit id="paY6Vja" resname="diba.nom">
+        <source>diba.nom</source>
+        <target>diba.nom</target>
+      </trans-unit>
+      <trans-unit id="ldQ_NCo" resname="Pàgina per usuaris autenticats">
+        <source>Pàgina per usuaris autenticats</source>
+        <target>Pàgina per usuaris autenticats</target>
+      </trans-unit>
+      <trans-unit id="CvJI2nv" resname="Llista de recursos">
+        <source>Llista de recursos</source>
+        <target>Llista de recursos</target>
+      </trans-unit>
+      <trans-unit id="1jbscwe" resname="Descripció">
+        <source>Descripció</source>
+        <target>Descripció</target>
+      </trans-unit>
+      <trans-unit id="FXzpi5o" resname="Url">
+        <source>Url</source>
+        <target>Url</target>
+      </trans-unit>
+      <trans-unit id="hasLxFv" resname="Pàgina d'exemple">
+        <source>Pàgina d'exemple</source>
+        <target>Pàgina d'exemple</target>
+      </trans-unit>
+      <trans-unit id="2_58FNP" resname="Llegeix-me">
+        <source>Llegeix-me</source>
+        <target>Llegeix-me</target>
+      </trans-unit>
+      <trans-unit id="ZTNxPUc" resname="Accés">
+        <source>Accés</source>
+        <target>Accés</target>
+      </trans-unit>
+      <trans-unit id="tQKMq3i" resname="Usuari">
+        <source>Usuari</source>
+        <target>Usuari</target>
+      </trans-unit>
+      <trans-unit id="gM9iP8." resname="Contrasenya">
+        <source>Contrasenya</source>
+        <target>Contrasenya</target>
+      </trans-unit>
+      <trans-unit id="jDxDQmN" resname="Entra">
+        <source>Entra</source>
+        <target>Entra</target>
+      </trans-unit>
+      <trans-unit id="0dohwGh" resname="Sortir">
+        <source>Sortir</source>
+        <target>Sortir</target>
+      </trans-unit>
+      <trans-unit id="h3sNkkM" resname="Accés restringit">
+        <source>Accés restringit</source>
+        <target>Accés restringit</target>
+      </trans-unit>
+      <trans-unit id="4D7wOaQ" resname="Informació de l'aplicació">
+        <source>Informació de l'aplicació</source>
+        <target>Informació de l'aplicació</target>
+      </trans-unit>
+      <trans-unit id="Sy23ibn" resname="Entorn">
+        <source>Entorn</source>
+        <target>Entorn</target>
+      </trans-unit>
+      <trans-unit id="vdJUtlu" resname="Build">
+        <source>Build</source>
+        <target>Build</target>
+      </trans-unit>
+      <trans-unit id="UPczsSk" resname="Nom del servidor">
+        <source>Nom del servidor</source>
+        <target>Nom del servidor</target>
+      </trans-unit>
+      <trans-unit id="FryTbVP" resname="IP del servidor">
+        <source>IP del servidor</source>
+        <target>IP del servidor</target>
+      </trans-unit>
+      <trans-unit id="Urw7juC" resname="Versió de Symfony">
+        <source>Versió de Symfony</source>
+        <target>Versió de Symfony</target>
+      </trans-unit>
+      <trans-unit id="eGrvsyl" resname="Versió de PHP">
+        <source>Versió de PHP</source>
+        <target>Versió de PHP</target>
+      </trans-unit>
+      <trans-unit id="EVosySw" resname="Timestamp">
+        <source>Timestamp</source>
+        <target>Timestamp</target>
+      </trans-unit>
+      <trans-unit id="5rr5B6W" resname="Informació de l'usuari">
+        <source>Informació de l'usuari</source>
+        <target>Informació de l'usuari</target>
+      </trans-unit>
+      <trans-unit id="47ienTP" resname="Username">
+        <source>Username</source>
+        <target>Username</target>
+      </trans-unit>
+      <trans-unit id="_GyMJXN" resname="Rols">
+        <source>Rols</source>
+        <target>Rols</target>
+      </trans-unit>
+      <trans-unit id="_9z67pM" resname="Inici">
+        <source>Inici</source>
+        <target>Inici</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

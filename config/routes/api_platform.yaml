@@ -1,0 +1,21 @@
+api_platform:
+  resource: .
+  type: api_platform
+  prefix: /api
+# App\Controller\ComarcaAggregationController:
+#     collectionOperations:
+#         get_aggregates:
+#             method: 'GET'
+#             path: '/municipality_values/comarca_aggregates'
+#             controller: 'App\Controller\ComarcaAggregationController::getComarcaAggregates'
+#             read: false
+#             output: false
+
+# App\Controller\MunicipalityValueController:
+#   collectionOperations:
+#     latest-by-comarca:
+#       method: "GET"
+#       path: "/municipality_values/latest-by-comarca"
+#       controller: 'App\Controller\MunicipalityValueController::getComarcaAggregates'
+#       read: false
+#       output: false

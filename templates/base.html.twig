@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    {% block head %}
+        {% block meta_tags %}
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="theme-color" content="#A41E34">
+            <meta name="msapplication-config" content="none">
+            <link href="{{ asset('build/img/favicon.ico') }}" rel="Shortcut Icon">
+        {% endblock %}
+
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="https://use.typekit.net/lbm3kny.css">
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block head_javascripts %}{% endblock %}
+
+        {% block head_title %}
+            <title>{{ 'app.nom'|trans }} | {{ 'diba.nom'|trans }}</title>
+        {% endblock %}
+    {% endblock %}
+</head>
+
+<body class="{{ site_color is defined ? site_color : app_env }}">
+{% block body %}
+    <div class="container">
+        {% block body_header %}
+            <header class="py-4">
+                {% include 'partials/header.html.twig' %}
+            </header>
+        {% endblock %}
+
+        {% block menu_primary %}
+            {% include 'partials/menu-primary.html.twig' %}
+        {% endblock %}
+
+        {% block banner %}
+            {% include 'partials/banner.html.twig' %}
+        {% endblock %}
+    </div>
+
+    {% block main %}
+        <main>
+            {% block carousel %}{% endblock %}
+
+            {% block contingut %}
+                <div id="content">
+                    <h1 class="visually-hidden">Diba Starterkit Symfony</h1>
+                    <div class="container">
+                        {% block breadcrumb %}{% endblock %}
+                        {% block contingut_central %}{% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+        </main>
+    {% endblock %}
+
+    <div class="container">
+        {% block contact %}{% endblock %}
+        {% block footer %}
+            <footer class="p-4">
+                {% include 'partials/footer_menu.html.twig' %}
+                {% include 'partials/footer_xs.html.twig' %}
+                {% include 'partials/footer.html.twig' %}
+            </footer>
+        {% endblock %}
+    </div>
+
+    {% block modals %}{% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+{% endblock %}
+</body>
+</html>

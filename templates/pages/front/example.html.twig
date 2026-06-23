@@ -1,0 +1,53 @@
+{% extends 'front.html.twig' %}
+
+{% block breadcrumb %}
+    {% set breads = [{label: 'Portada', path: path('front.home')}, {label: 'Exemple'}] %}
+    {% include 'partials/breadcrumb.html.twig' with {home: path('front.home'), breads: breads} only %}
+{% endblock %}
+
+{%  block menu_secondary %}
+    <div class="container">
+        {% include 'partials/menu-secondary.html.twig' with {'color': 'c-color9'} only %}
+    </div>
+{% endblock %}
+
+{% block carousel %}
+    <div class="container">
+        {% include 'partials/carousel.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block banner %}{% endblock %}
+
+{% block contact %}
+    {% include 'partials/contacte.html.twig' %}
+{% endblock %}
+
+{% block contingut_central %}
+    <h2 class="h5 c-diba">{{ "Pàgina d'exemple"|trans }}</h2>
+
+    <p>
+        Aquesta pàgina d'exemple conté diversos components i llibreries, com un mapa o un carousel, a mode d'exemple de
+        com importar i utilitzar diferents mapes i components.
+    </p>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <canvas id="exemplegrafic"></canvas>
+        </div>
+        <div class="col-md-6">
+            <div id="mapa1" class="height-xxl"></div>
+            <div id="mapa2" class="height-xxl"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('example') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('example') }}
+{% endblock %}
