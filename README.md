@@ -87,7 +87,7 @@ vendor/bin/php-cs-fixer fix
 
 ## Llicència
 
-[MIT](LICENSE).
+[AGPLv3](LICENSE)
 
 ## Crèdits
 
